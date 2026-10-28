@@ -1,8 +1,64 @@
+<div align="center">
+
 # Phishing URL Awareness Checker
+
+A beginner-friendly Python command-line project for **security awareness practice**.
+It checks URL text for visible warning signs and prints cautious guidance.
+
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)
+![Purpose](https://img.shields.io/badge/Purpose-Educational%20Awareness-2E7D32)
+
+</div>
 
 ## Overview
 
-Phishing uses deceptive messages and links to trick people into sharing private information. This beginner Python command-line project checks URL text for six visible warning signs and prints a cautious explanation. It never opens a link or contacts a website.
+Phishing uses deceptive messages and links to trick people into sharing private information. This project checks URL text for six visible warning signs and prints a cautious explanation. It never opens a link or contacts a website.
+
+## Warning Signs at a Glance
+
+- ⚠️ `@` symbol appears in the URL
+- ⚠️ URL is unusually long (over 100 characters)
+- ⚠️ Hostname is an IP address
+- ⚠️ Hostname has five or more dot-separated parts
+- ⚠️ Hostname contains punycode style text (`xn--`)
+- ⚠️ URL uses `http` instead of `https`
+
+## URL Check Flow
+
+```mermaid
+flowchart TD
+    A[User enters URL text] --> B[Parse URL text safely]
+    B --> C1{Contains @ symbol?}
+    B --> C2{Length > 100 chars?}
+    B --> C3{Hostname is IP address?}
+    B --> C4{Hostname has >= 5 parts?}
+    B --> C5{Hostname contains xn-- ?}
+    B --> C6{Scheme is HTTP?}
+
+    C1 --> D[Count warning signs]
+    C2 --> D
+    C3 --> D
+    C4 --> D
+    C5 --> D
+    C6 --> D
+
+    D --> E{Any warnings found?}
+    E -->|Yes| F[Show warning list + REVIEW CAREFULLY count]
+    E -->|No| G[Show no listed warnings message]
+```
+
+## Text-Only Architecture (Safety by Design)
+
+```mermaid
+flowchart LR
+    U[User input: URL text] --> CLI[CLI program]
+    CLI --> P[URL parsing]
+    P --> W[Six warning-sign checks]
+    W --> O[Printed guidance output]
+
+    CLI -. does NOT open links .-> B[(Web browser)]
+    CLI -. does NOT call websites .-> N[(Network request)]
+```
 
 ## Features
 
@@ -64,10 +120,24 @@ program.
 
 ## Screenshots
 
-After running the program and recording your five sample results, save your own screenshots in the `screenshots` folder using these names:
+After running the program and recording your five sample results, save screenshots in `/screenshots` using these names:
 
 - `sample_run.png` — terminal showing the command, sample input, and output
 - `test_results.png` — your completed test table or the five terminal runs
+
+Suggested clean layout (renders well even before image files are added):
+
+| Screenshot | File to add | What it should show |
+| --- | --- | --- |
+| Sample program run | `screenshots/sample_run.png` | One full terminal interaction |
+| Test evidence | `screenshots/test_results.png` | Your test table or five run outputs |
+
+When files are ready, you can embed them with:
+
+```md
+![Sample program run](screenshots/sample_run.png)
+![Test evidence](screenshots/test_results.png)
+```
 
 ## Improvements
 

@@ -1,0 +1,16 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run phishing checker proof",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"(echo https://www.example.com/login& echo http://192.0.2.10/account& echo http://example.com@sample.invalid/login& echo https://a.b.c.d.e.example.invalid/path& echo https://xn--example.invalid/& echo q) | python phishing_checker.py"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		}
+	]
+}

@@ -1,8 +1,35 @@
-# Phishing URL Awareness Checker
+<p align="center">
+  <img src="https://img.shields.io/badge/Phishing%20URL-Awareness%20Checker-7c3aed?style=for-the-badge" alt="Phishing URL Awareness Checker banner badge" />
+</p>
+
+<h1 align="center">Phishing URL Awareness Checker</h1>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white" alt="Python 3.10 or newer badge" />
+  <img src="https://img.shields.io/badge/Mode-CLI-0ea5e9" alt="Command-line mode badge" />
+  <img src="https://img.shields.io/badge/Safety-Text--Only%20Checks-16a34a" alt="Text-only checks safety badge" />
+</p>
 
 ## Overview
 
 Phishing uses deceptive messages and links to trick people into sharing private information. This beginner Python command-line project checks URL text for six visible warning signs and prints a cautious explanation. It never opens a link or contacts a website.
+
+## Visual Flow
+
+```mermaid
+flowchart TD
+    A[User enters URL text in CLI] --> B{Input valid URL format?}
+    B -- No --> C[Show input guidance message<br/>No URL entered / Invalid format / No hostname]
+    C --> H[Display awareness reminder]
+    B -- Yes --> D[Analyze visible warning signs<br/>@ symbol, URL length, IP host,<br/>many subdomains, punycode, HTTP]
+    D --> E{Any warning signs found?}
+    E -- Yes --> F[Print warning findings +<br/>REVIEW CAREFULLY summary]
+    E -- No --> G[Print cautious message:<br/>No listed warning signs found]
+    F --> H[Display awareness reminder]
+    G --> H
+```
+
+This flow diagram mirrors the current `phishing_checker.py` behavior: URL text is validated first, visible indicators are checked next, and the CLI always ends with guidance to stay cautious.
 
 ## Features
 
